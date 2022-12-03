@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://jmix.io/schema/ui/menu">
+
+    <menu id="application" caption="msg://gr.compiler.vip/menu.application" insertBefore="administration">
+        <item screen="VIP_User.browse" caption="msg://gr.compiler.vip.screen.user/UserBrowse.caption"/>
+        <item screen="themeSettingsScreen" caption="msg://io.jmix.ui.app.themesettings/themeSettings.caption"/>
+        <item screen="VIP_HomeScreen" caption="msg://gr.compiler.vip.screen.home/homeScreen.caption"/>
+        <item screen="VIP_VesselType.browse" caption="msg://gr.compiler.vip.screen.vesseltype/vesselTypeBrowse.menu"/>
+        <item screen="VIP_Vessel.browse" caption="msg://gr.compiler.vip.screen.vessel/vesselBrowse.menu"/>
+    </menu>
+
+</menu-config>

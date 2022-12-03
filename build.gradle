@@ -1,0 +1,62 @@
+plugins {
+    id 'io.jmix' version '1.4.0'
+    id 'java'
+}
+
+apply plugin: 'org.springframework.boot'
+
+jmix {
+    bomVersion = '1.4.1'
+    projectId = 'VIP'
+}
+
+group = 'gr.compiler'
+version = '0.0.1-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+    maven {
+        url 'https://global.repo.jmix.io/repository/public'
+    }
+}
+
+dependencies {
+    implementation 'io.jmix.core:jmix-core-starter'
+    implementation 'io.jmix.data:jmix-eclipselink-starter'
+    implementation 'io.jmix.ui:jmix-ui-starter'
+    implementation 'io.jmix.ui:jmix-ui-data-starter'
+    implementation 'io.jmix.ui:jmix-ui-themes-compiled'
+    implementation 'io.jmix.security:jmix-security-starter'
+    implementation 'io.jmix.security:jmix-security-ui-starter'
+    implementation 'io.jmix.security:jmix-security-data-starter'
+    implementation 'io.jmix.localfs:jmix-localfs-starter'
+    implementation 'io.jmix.datatools:jmix-datatools-starter'
+    implementation 'io.jmix.datatools:jmix-datatools-ui-starter'
+
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+
+    runtimeOnly 'org.hsqldb:hsqldb'
+
+    testImplementation('org.springframework.boot:spring-boot-starter-test') {
+        exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
+    }
+    implementation 'io.jmix.appsettings:jmix-appsettings-ui-starter'
+    implementation 'io.jmix.appsettings:jmix-appsettings-starter'
+    implementation 'io.jmix.ui:jmix-charts-starter'
+    widgets 'io.jmix.ui:jmix-ui-widgets'
+    widgets 'io.jmix.ui:jmix-charts-widgets'
+    implementation 'io.jmix.dashboards:jmix-dashboards-ui-starter'
+    implementation 'io.jmix.dashboards:jmix-dashboards-starter'
+    implementation 'io.jmix.quartz:jmix-quartz-starter'
+    implementation 'io.jmix.multitenancy:jmix-multitenancy-starter'
+    implementation 'io.jmix.multitenancy:jmix-multitenancy-ui-starter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+compileWidgets {
+    generate "gr.compiler.vip.widgets.CustomWidgetSet"
+    includePaths("**/io/jmix/**/widget/**", "**/gr/compiler/vip/widgets/**")
+}

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout>
+        <jsComponent id="mapComponent"
+                     initFunctionName="ui_components_javascript_Map" width="800px" height="600px">
+            <dependencies>
+                <dependency path="vaadin://amcharts/index.js"/>
+                <dependency path="vaadin://amcharts/map.js"/>
+                <dependency path="vaadin://amcharts/geodata/worldLow.js"/>
+                <dependency path="vaadin://amcharts/themes/Animated.js"/>
+                <dependency path="vaadin://amcharts/map-connector.js"/>
+            </dependencies>
+        </jsComponent>
+    </layout>
+</fragment>

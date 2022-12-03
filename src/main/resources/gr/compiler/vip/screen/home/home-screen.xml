@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://homeScreen.caption">
+    <layout>
+        <vbox>
+            <fragment id="worldMap" screen="VIP_MapFragment"></fragment>
+            <fragment id="vessels" screen="VIP_VesselFragment"></fragment>
+        </vbox>
+
+    </layout>
+</window>

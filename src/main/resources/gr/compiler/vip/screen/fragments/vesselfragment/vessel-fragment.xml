@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data readOnly="true">
+        <collection id="vesselsDc"
+                    class="gr.compiler.vip.entity.Vessel">
+            <fetchPlan extends="_base">
+                <property name="type" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader id="vesselsDl">
+                <query>
+                    <![CDATA[select e from VIP_Vessel e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout expand="vesselsTable" spacing="true">
+        <dataGrid id="vesselsTable"
+                  width="100%"
+                  dataContainer="vesselsDc" stylename="borderless no-vertical-lines no-horizontal-lines">
+            <actions>
+                <action id="view" type="view"/>
+            </actions>
+            <columns>
+                <column property="name" id="name"/>
+                <column property="type" id="type"/>
+            </columns>
+            <simplePagination/>
+        </dataGrid>
+    </layout>
+</fragment>
