@@ -11,6 +11,15 @@
                   <DataStoreSettings />
                 </value>
               </entry>
+              <entry key="secondary">
+                <value>
+                  <DataStoreSettings>
+                    <option name="supportedTypes">
+                      <option value="maria" />
+                    </option>
+                  </DataStoreSettings>
+                </value>
+              </entry>
             </map>
           </option>
         </ModuleSettings>

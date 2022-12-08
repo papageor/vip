@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="VIP">
+        <createTable tableName="VIP_ALERT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_ALERT"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SELECT_QUERY" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATA_STORE_ID" type="UUID"/>
+            <column name="SYS_TENANT_ID" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="VIP">
+        <createTable tableName="VIP_DATA_QUERY">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_DATA_QUERY"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DATA_STORE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="SELECT_QUERY" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="VIP">
+        <createTable tableName="VIP_DATA_QUERY_FIELD">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_DATA_QUERY_FIELD"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="QUERY_ID" type="UUID"/>
+            <column name="LABEL" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="VIP">
+        <createTable tableName="VIP_DATA_QUERY_PARAMETER">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_DATA_QUERY_PARAMETER"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DATA_QUERY_ID" type="UUID"/>
+            <column name="TITLE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="PLACEHOLDER" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DEFAULT_VALUE" type="VARCHAR(255)"/>
+            <column name="DATA_TYPE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_REQUIRED" type="BOOLEAN"/>
+            <column name="SHOW_ON_LEGEND" type="BOOLEAN"/>
+            <column name="ORDER_" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="VIP">
+        <createTable tableName="VIP_DATA_Q_STORE">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_DATA_Q_STORE"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATABASE_TYPE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATABASE_URL" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CONNECTION_PARAMS" type="VARCHAR(255)"/>
+            <column name="CUSTOM_DATABASE_URL" type="VARCHAR(255)"/>
+            <column name="INTEGRATED_SECURITY" type="BOOLEAN"/>
+            <column name="DATABASE_USER" type="VARCHAR(255)"/>
+            <column name="PASSWORD" type="VARCHAR(255)"/>
+            <column name="TOKEN" type="VARCHAR(255)"/>
+            <column name="ORGANIZATION" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="VIP">
+        <createTable tableName="VIP_MAIN_MODULES">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_MAIN_MODULES"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="OPERATION" type="BOOLEAN"/>
+            <column name="PERFORMANCE" type="BOOLEAN"/>
+            <column name="COMMUNICATION" type="BOOLEAN"/>
+            <column name="SURVEILLANCE" type="BOOLEAN"/>
+            <column name="CYBERSECURITY" type="BOOLEAN"/>
+            <column name="VESSEL_ID" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="VIP">
+        <createTable tableName="VIP_SETUP">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_SETUP"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="FORM_BUILDER_URL" type="VARCHAR(255)"/>
+            <column name="FORM_RUNNER_URL" type="VARCHAR(255)"/>
+            <column name="FORM_SERVICES_URL" type="VARCHAR(255)"/>
+            <column name="FORM_DEMO_DOCUMENT_ID" type="VARCHAR(255)"/>
+            <column name="FFMPEG_DIRECTORY" type="VARCHAR(255)"/>
+            <column name="FFMPEG_PARAMETERS" type="VARCHAR(255)"/>
+            <column name="IMAGES_DIRECTORY" type="VARCHAR(255)"/>
+            <column name="VIDEOS_REPOSITORY" type="VARCHAR(255)"/>
+            <column name="DEMO_MODE" type="BOOLEAN"/>
+            <column name="DEMO_WORKING_DATE" type="DATETIME"/>
+            <column name="VESSEL_VALUE_LIST" type="VARCHAR(255)"/>
+            <column name="TOKEN" type="VARCHAR(255)"/>
+            <column name="ORGANIZATION" type="VARCHAR(255)"/>
+            <column name="ORGANIZATION_ID" type="VARCHAR(255)"/>
+            <column name="OPERATION_DATE_RANGE" type="INT"/>
+            <column name="REPORTS_DATE_RANGE" type="INT"/>
+            <column name="CISCO_KEY" type="VARCHAR(255)"/>
+            <column name="CISCO_CLIENT_ID" type="VARCHAR(255)"/>
+            <column name="CISCO_SERVICE_URI" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="VIP">
+        <addColumn tableName="VIP_VESSEL">
+            <column name="AUX_ENGINE_COUNT" type="INT"/>
+            <column name="AUX_ENGINE_CYLINDER_COUNT" type="INT"/>
+            <column name="AUX_ENGINE_TURBO_CHARGER_COUNT" type="INT"/>
+            <column name="BUILT" type="VARCHAR(255)"/>
+            <column name="CATEGORY" type="VARCHAR(255)"/>
+            <column name="CLASSIFICATION" type="VARCHAR(255)"/>
+            <column name="CSGROUP_GUID" type="VARCHAR(255)"/>
+            <column name="DEMO_FOC_DEVIATION" type="DOUBLE"/>
+            <column name="DEMO_SPEED_DEVIATION" type="DOUBLE"/>
+            <column name="DESTINATION_PORT" type="VARCHAR(255)"/>
+            <column name="DISABLED" type="BOOLEAN"/>
+            <column name="DWT" type="DOUBLE"/>
+            <column name="ETA" type="DATETIME"/>
+            <column name="FLAG" type="VARCHAR(255)"/>
+            <column name="FOC_LIMIT" type="DOUBLE"/>
+            <column name="FUEL_TYPE1" type="VARCHAR(255)"/>
+            <column name="FUEL_TYPE2" type="VARCHAR(255)"/>
+            <column name="FUEL_TYPE3" type="VARCHAR(255)"/>
+            <column name="FUEL_TYPE4" type="VARCHAR(255)"/>
+            <column name="FULL_LOAD_DRAFT" type="DOUBLE"/>
+            <column name="GT" type="VARCHAR(255)"/>
+            <column name="HEADING" type="DECIMAL(19, 3)"/>
+            <column name="IMAGE_FILE" type="VARCHAR(1024)"/>
+            <column name="IMO" type="VARCHAR(255)"/>
+            <column name="LATITUDE" type="DECIMAL(19, 3)"/>
+            <column name="LBD" type="VARCHAR(255)"/>
+            <column name="LONGITUDE" type="DECIMAL(19, 3)"/>
+            <column name="MAIN_ENGINE_COUNT" type="INT"/>
+            <column name="MAIN_ENGINE_CYLINDER_NUM" type="INT"/>
+            <column name="MAIN_ENGINE_MODEL_NO" type="VARCHAR(255)"/>
+            <column name="MAIN_ENGINE_RATED_POWER" type="INT"/>
+            <column name="MAIN_ENGINE_RATED_SPEED" type="DECIMAL(19, 2)"/>
+            <column name="MESSAGE_ON_SELECTION" type="VARCHAR(255)"/>
+            <column name="MMSI" type="VARCHAR(255)"/>
+            <column name="ORGANIZATION" type="VARCHAR(255)"/>
+            <column name="OWNER" type="VARCHAR(255)"/>
+            <column name="PROPELLER_PITCH" type="DECIMAL(19, 2)"/>
+            <column name="REFERENCE_ID" type="INT"/>
+            <column name="SPEED_LIMIT" type="DOUBLE"/>
+            <column name="SYS_TENANT_ID" type="VARCHAR(255)"/>
+            <column name="TCSPEED_MARGIN" type="DOUBLE"/>
+            <column name="TOKEN" type="VARCHAR(255)"/>
+            <column name="TURBO_CHARGER_NUM" type="INT"/>
+            <column name="WEBEX_ROOM" type="VARCHAR(255)"/>
+            <column name="YEAR_BUILT" type="VARCHAR(255)"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="9" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="QUERY_ID" baseTableName="VIP_DATA_QUERY_FIELD"
+                                 constraintName="FK_VIPDATAQUERYFIELD_ON_QUERY" referencedColumnNames="ID"
+                                 referencedTableName="VIP_DATA_QUERY"/>
+    </changeSet>
+    <changeSet id="10" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="DATA_QUERY_ID" baseTableName="VIP_DATA_QUERY_PARAMETER"
+                                 constraintName="FK_VIPDATAQUERYPA_ON_DATAQUERY" referencedColumnNames="ID"
+                                 referencedTableName="VIP_DATA_QUERY"/>
+    </changeSet>
+    <changeSet id="11" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="DATA_STORE_ID" baseTableName="VIP_DATA_QUERY"
+                                 constraintName="FK_VIPDATAQUERY_ON_DATASTORE" referencedColumnNames="ID"
+                                 referencedTableName="VIP_DATA_Q_STORE"/>
+    </changeSet>
+    <changeSet id="12" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="DATA_STORE_ID" baseTableName="VIP_ALERT"
+                                 constraintName="FK_VIP_ALERT_ON_DATA_STORE" referencedColumnNames="ID"
+                                 referencedTableName="VIP_DATA_Q_STORE"/>
+    </changeSet>
+    <changeSet id="13" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="VESSEL_ID" baseTableName="VIP_MAIN_MODULES"
+                                 constraintName="FK_VIP_MAIN_MODULES_ON_VESSEL" referencedColumnNames="ID"
+                                 referencedTableName="VIP_VESSEL"/>
+    </changeSet>
+</databaseChangeLog>

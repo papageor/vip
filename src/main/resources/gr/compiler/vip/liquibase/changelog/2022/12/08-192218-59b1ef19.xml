@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.11.xsd"
+        objectQuotingStrategy="QUOTE_ONLY_RESERVED_WORDS">
+    <changeSet id="1" author="VIP">
+        <createTable tableName="VIP_COMMON_TAG">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_COMMON_TAG"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="TAG" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TOTALIZER" type="VARCHAR(255)"/>
+            <column name="AVERAGED" type="VARCHAR(255)"/>
+            <column name="GID" type="VARCHAR(255)"/>
+            <column name="NOTES" type="VARCHAR(255)"/>
+            <column name="PARENT_ID" type="UUID"/>
+            <column name="I0" type="INT"/>
+            <column name="I1" type="INT"/>
+            <column name="I2" type="INT"/>
+            <column name="I3" type="INT"/>
+            <column name="UNIT_ID" type="INT"/>
+            <column name="CSV_ID" type="INT"/>
+            <column name="LOWER_VALUE" type="DOUBLE"/>
+            <column name="UPPER_VALUE" type="DOUBLE"/>
+            <column name="DECIMALS" type="INT"/>
+            <column name="IS_EXTERNAL" type="BOOLEAN"/>
+            <column name="IS_CALCULATED" type="BOOLEAN"/>
+            <column name="CALCULATION_TAGS" type="VARCHAR(255)"/>
+            <column name="CALCULATION_EXPRESSION" type="CLOB"/>
+            <column name="COMMON_TAG_ID" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="2" author="VIP">
+        <createTable tableName="VIP_EVENT">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_EVENT"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DATASTORE_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VESSEL_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="FIELD_ID" type="UUID">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MESSAGE" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="NOTIFICATION_RULE_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="THRESHOLD_VALUE" type="DOUBLE">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVENT_QUERY" type="CLOB">
+                <constraints nullable="false"/>
+            </column>
+            <column name="EVERY_" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+    <changeSet id="3" author="VIP">
+        <createTable tableName="VIP_OPTIONS_LINES">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_OPTIONS_LINES"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="CONDITION_" type="VARCHAR(255)"/>
+            <column name="TAG_ID" type="UUID"/>
+            <column name="VALUE_" type="VARCHAR(255)"/>
+            <column name="SIDE" type="BOOLEAN"/>
+            <column name="CONDITION_LEFT" type="BOOLEAN"/>
+            <column name="CONDITION_RIGHT" type="BOOLEAN"/>
+            <column name="USERS_EVENT_OPTIONSES_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="4" author="VIP">
+        <createTable tableName="VIP_REQUIRED_COMMON_TAGS">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_REQUIRED_COMMON_TAGS"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="MODULE_" type="VARCHAR(255)"/>
+            <column name="REQUIRED_COMMON_TAGS_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="5" author="VIP">
+        <createTable tableName="VIP_ROWS_EVENTS">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_ROWS_EVENTS"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="CONDITION_" type="INT"/>
+            <column name="POSITION" type="INT"/>
+            <column name="CON" type="VARCHAR(255)"/>
+            <column name="VALUE_" type="VARCHAR(255)"/>
+            <column name="TAG_ID" type="UUID"/>
+            <column name="USER_EVENT_CONFS_ID" type="UUID"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="6" author="VIP">
+        <createTable tableName="VIP_UNIT_OF_MEASURE">
+            <column name="ID" type="INT">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_UNIT_OF_MEASURE"/>
+            </column>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCR" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="GID" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="7" author="VIP">
+        <createTable tableName="VIP_USERS_EVENT_OPTIONS">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_USERS_EVENT_OPTIONS"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VESSEL_NAME_ID" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IS_ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DESCRIPTION" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="8" author="VIP">
+        <createTable tableName="VIP_USER_EVENT_CONF">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_USER_EVENT_CONF"/>
+            </column>
+            <column name="VERSION" type="INT">
+                <constraints nullable="false"/>
+            </column>
+            <column name="CREATED_BY" type="VARCHAR(255)"/>
+            <column name="CREATED_DATE" type="DATETIME"/>
+            <column name="LAST_MODIFIED_BY" type="VARCHAR(255)"/>
+            <column name="LAST_MODIFIED_DATE" type="DATETIME"/>
+            <column name="DELETED_BY" type="VARCHAR(255)"/>
+            <column name="DELETED_DATE" type="DATETIME"/>
+            <column name="TASK_ID" type="VARCHAR(255)"/>
+            <column name="VESSEL_NAME" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="ACTIVE" type="BOOLEAN">
+                <constraints nullable="false"/>
+            </column>
+            <column name="TASK_QUERY" type="VARCHAR(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="IF_EVENT_PERSISTS_AT_LEAST" type="INT"/>
+            <column name="IDLE_TIME_AFTER_ALERTING" type="INT"/>
+            <column name="OFFSET_" type="VARCHAR(10)"/>
+            <column name="NOTIFICATION_MESSAGE" type="VARCHAR(255)"/>
+            <column name="TARGET_GROUP" type="INT"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="9" author="VIP">
+        <createTable tableName="VIP_USER_EVENT_OPTIONS">
+            <column name="ID" type="UUID">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VIP_USER_EVENT_OPTIONS"/>
+            </column>
+            <column name="condition_" type="INT"/>
+            <column name="line1" type="VARCHAR(255)"/>
+            <column name="line2" type="VARCHAR(255)"/>
+            <column name="line3" type="VARCHAR(255)"/>
+            <column name="line4" type="VARCHAR(255)"/>
+            <column name="line5" type="VARCHAR(255)"/>
+            <column name="line6" type="VARCHAR(255)"/>
+        </createTable>
+    </changeSet>
+    <changeSet id="10" author="VIP">
+        <createIndex indexName="IDX_VIPOPTIONSLI_USERSEVENTOP" tableName="VIP_OPTIONS_LINES">
+            <column name="USERS_EVENT_OPTIONSES_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="USERS_EVENT_OPTIONSES_ID" baseTableName="VIP_OPTIONS_LINES"
+                                 constraintName="FK_VIPOPTIONSL_ON_USERSEVENTO" referencedColumnNames="ID"
+                                 referencedTableName="VIP_USERS_EVENT_OPTIONS"/>
+    </changeSet>
+    <changeSet id="11" author="VIP">
+        <createIndex indexName="IDX_VIPREQUIREDC_REQUIREDCOMM" tableName="VIP_REQUIRED_COMMON_TAGS">
+            <column name="REQUIRED_COMMON_TAGS_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="REQUIRED_COMMON_TAGS_ID" baseTableName="VIP_REQUIRED_COMMON_TAGS"
+                                 constraintName="FK_VIPREQUIRED_ON_REQUIREDCOM" referencedColumnNames="ID"
+                                 referencedTableName="VIP_COMMON_TAG"/>
+    </changeSet>
+    <changeSet id="12" author="VIP">
+        <createIndex indexName="IDX_VIPROWSEVENT_USEREVENTCON" tableName="VIP_ROWS_EVENTS">
+            <column name="USER_EVENT_CONFS_ID"/>
+        </createIndex>
+
+        <addForeignKeyConstraint baseColumnNames="USER_EVENT_CONFS_ID" baseTableName="VIP_ROWS_EVENTS"
+                                 constraintName="FK_VIPROWSEVEN_ON_USEREVENTCO" referencedColumnNames="ID"
+                                 referencedTableName="VIP_USER_EVENT_CONF"/>
+    </changeSet>
+    <changeSet id="13" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="VESSEL_NAME_ID" baseTableName="VIP_USERS_EVENT_OPTIONS"
+                                 constraintName="FK_VIPUSERSEVENT_ON_VESSELNAME" referencedColumnNames="ID"
+                                 referencedTableName="VIP_VESSEL"/>
+    </changeSet>
+    <changeSet id="14" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="PARENT_ID" baseTableName="VIP_COMMON_TAG"
+                                 constraintName="FK_VIP_COMMON_TAG_ON_PARENT" referencedColumnNames="ID"
+                                 referencedTableName="VIP_COMMON_TAG"/>
+    </changeSet>
+    <changeSet id="15" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="UNIT_ID" baseTableName="VIP_COMMON_TAG"
+                                 constraintName="FK_VIP_COMMON_TAG_ON_UNIT" referencedColumnNames="ID"
+                                 referencedTableName="VIP_UNIT_OF_MEASURE"/>
+    </changeSet>
+    <changeSet id="16" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="DATASTORE_ID" baseTableName="VIP_EVENT"
+                                 constraintName="FK_VIP_EVENT_ON_DATASTORE" referencedColumnNames="ID"
+                                 referencedTableName="VIP_DATA_Q_STORE"/>
+    </changeSet>
+    <changeSet id="17" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="FIELD_ID" baseTableName="VIP_EVENT"
+                                 constraintName="FK_VIP_EVENT_ON_FIELD" referencedColumnNames="ID"
+                                 referencedTableName="VIP_COMMON_TAG"/>
+    </changeSet>
+    <changeSet id="18" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="VESSEL_ID" baseTableName="VIP_EVENT"
+                                 constraintName="FK_VIP_EVENT_ON_VESSEL" referencedColumnNames="ID"
+                                 referencedTableName="VIP_VESSEL"/>
+    </changeSet>
+    <changeSet id="19" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="TAG_ID" baseTableName="VIP_OPTIONS_LINES"
+                                 constraintName="FK_VIP_OPTIONS_LINES_ON_TAG" referencedColumnNames="ID"
+                                 referencedTableName="VIP_COMMON_TAG"/>
+    </changeSet>
+    <changeSet id="20" author="VIP">
+        <addForeignKeyConstraint baseColumnNames="TAG_ID" baseTableName="VIP_ROWS_EVENTS"
+                                 constraintName="FK_VIP_ROWS_EVENTS_ON_TAG" referencedColumnNames="ID"
+                                 referencedTableName="VIP_COMMON_TAG"/>
+    </changeSet>
+</databaseChangeLog>

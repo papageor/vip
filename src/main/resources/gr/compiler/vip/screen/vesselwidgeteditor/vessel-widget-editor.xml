@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout expand="hBox">
+        <hbox id="hBox" width="AUTO" spacing="true" expand="vesselPicker">
+            <label value="Vessel"/>
+            <entityPicker id="vesselPicker"
+                          metaClass="VIP_Vessel"
+                          property="name"
+                          required="true"/>
+        </hbox>
+    </layout>
+</fragment>

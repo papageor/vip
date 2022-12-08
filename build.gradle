@@ -50,6 +50,15 @@ dependencies {
     implementation 'io.jmix.quartz:jmix-quartz-starter'
     implementation 'io.jmix.multitenancy:jmix-multitenancy-starter'
     implementation 'io.jmix.multitenancy:jmix-multitenancy-ui-starter'
+
+    implementation 'com.google.guava:guava:23.6.1-jre'
+    implementation 'com.influxdb:influxdb-client-java:6.5.0'
+    implementation 'org.influxdb:influxdb-java:2.20'
+    implementation 'com.h2database:h2:1.4.200'
+    implementation 'org.javatuples:javatuples:1.2'
+    implementation 'org.json:json:20220924'
+    implementation 'org.apache.poi:poi-ooxml:4.1.1'
+    implementation 'org.mariadb.jdbc:mariadb-java-client'
 }
 
 test {

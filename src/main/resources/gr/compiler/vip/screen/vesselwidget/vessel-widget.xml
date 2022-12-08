@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data>
+        <collection id="vesselsDc" class="gr.compiler.vip.entity.Vessel">
+            <fetchPlan extends="_base"/>
+            <loader id="vesselsDl">
+                <query>
+                    <![CDATA[select e from VIP_Vessel e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+    </facets>
+    <layout>
+        <dataGrid id="vesselsTable"
+                  width="100%"
+                  dataContainer="vesselsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="refresh" type="refresh"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column property="name" id="name"/>
+                <column property="type" id="type"/>
+            </columns>
+            <simplePagination/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="vesselsTable.create"/>
+                <button id="editBtn" action="vesselsTable.edit"/>
+                <button id="refreshBtn" action="vesselsTable.refresh"/>
+                <button id="removeBtn" action="vesselsTable.remove"/>
+            </buttonsPanel>
+        </dataGrid>
+    </layout>
+</fragment>
