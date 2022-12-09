@@ -9,6 +9,7 @@ import io.jmix.dashboards.model.Widget;
 import io.jmix.dashboardsui.annotation.DashboardWidget;
 import io.jmix.dashboardsui.annotation.WidgetParam;
 import io.jmix.ui.WindowParam;
+import io.jmix.ui.component.Label;
 import io.jmix.ui.model.CollectionContainer;
 import io.jmix.ui.screen.ScreenFragment;
 import io.jmix.ui.screen.Subscribe;
@@ -21,7 +22,7 @@ import java.util.*;
 
 @UiController("VIP_ChartWidget")
 @UiDescriptor("chart-widget.xml")
-@DashboardWidget(name = "LineChart",editFragmentId = "VIP_VesselWidgetEditor")
+@DashboardWidget(name = "LineChart")
 public class ChartWidget extends ScreenFragment {
     private static final int DAYS_COUNT = 20;
 
@@ -34,16 +35,23 @@ public class ChartWidget extends ScreenFragment {
 
     @WindowParam
     @WidgetParam
-    protected Vessel vessel;
+    protected String vesselName;
 
     @WindowParam
     @WidgetParam
     protected CommonTag commonTag;
 
+    @WindowParam
+    @WidgetParam
+    protected CommonTag commonTag2;
+
+    @WindowParam
+    @WidgetParam
+    protected CommonTag commonTag3;
+
 
     @WindowParam
     protected Widget widget;
-
     private Random random = new Random();
 
     @Subscribe
@@ -54,6 +62,7 @@ public class ChartWidget extends ScreenFragment {
             items.add(generateDateValueVolume(DateUtils.addDays(startDate, i), i));
         }
         lineChartDc.setItems(items);
+
     }
 
     private DateValueVolume generateDateValueVolume(Date date, int i) {

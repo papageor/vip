@@ -5,6 +5,7 @@
         <vbox>
             <fragment id="worldMap" screen="VIP_MapFragment"></fragment>
             <fragment id="vessels" screen="VIP_VesselFragment"></fragment>
+            <fragment id="windy" screen="VIP_WindyFragment"></fragment>
         </vbox>
 
     </layout>
