@@ -1,7 +1,9 @@
 package gr.compiler.vip.entity;
 
+import io.jmix.core.annotation.TenantId;
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
 import io.jmix.core.metamodel.annotation.JmixEntity;
+import io.jmix.multitenancy.core.AcceptsTenant;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
@@ -16,7 +18,7 @@ import java.util.UUID;
 @JmixEntity
 @Table(name = "VIP_SETUP")
 @Entity(name = "VIP_Setup")
-public class Setup {
+public class Setup implements AcceptsTenant {
     @JmixGeneratedValue
     @Column(name = "ID", nullable = false)
     @Id
@@ -100,6 +102,23 @@ public class Setup {
 
     @Column(name = "CISCO_SERVICE_URI")
     private String ciscoServiceURI;
+
+    @TenantId
+    @Column(name = "SYS_TENANT_ID")
+    private String tenant;
+    public String getTenant() {
+        return tenant;
+    }
+
+    public void setTenant(String tenant) {
+        this.tenant = tenant;
+    }
+
+    @Override
+    public String getTenantId() {
+        return tenant;
+    }
+
 
     public String getCiscoServiceURI() {
         return ciscoServiceURI;

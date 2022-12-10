@@ -1,6 +1,7 @@
 package gr.compiler.vip.entity;
 
 import io.jmix.core.entity.annotation.JmixGeneratedValue;
+import io.jmix.core.metamodel.annotation.InstanceName;
 import io.jmix.core.metamodel.annotation.JmixEntity;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -43,6 +44,7 @@ public class DataQStore {
     @Temporal(TemporalType.TIMESTAMP)
     private Date lastModifiedDate;
 
+    @InstanceName
     @NotNull
     @Column(name = "NAME", nullable = false)
     private String name;
@@ -76,14 +78,14 @@ public class DataQStore {
     @Column(name = "ORGANIZATION")
     private String organization;
 
-
-    public void setDatabaseType(String databaseType) {
-        this.databaseType = databaseType;
+    public void setDatabaseType(DatabaseType databaseType) {
+        this.databaseType = databaseType == null ? null : databaseType.getId();
     }
 
-    public String getDatabaseType() {
-        return databaseType;
+    public DatabaseType getDatabaseType() {
+        return databaseType == null ? null : DatabaseType.fromId(databaseType);
     }
+
 
     public String getOrganization() {
         return organization;

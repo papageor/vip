@@ -7,6 +7,8 @@
         <item screen="VIP_HomeScreen" caption="msg://gr.compiler.vip.screen.home/homeScreen.caption"/>
         <item screen="VIP_VesselType.browse" caption="msg://gr.compiler.vip.screen.vesseltype/vesselTypeBrowse.menu"/>
         <item screen="VIP_Vessel.browse" caption="msg://gr.compiler.vip.screen.vessel/vesselBrowse.menu"/>
+        <item screen="VIP_DataQStore.browse" caption="msg://gr.compiler.vip.screen.dataqstore/dataQStoreBrowse.menu"/>
+        <item screen="VIP_DataQuery.browse" caption="msg://gr.compiler.vip.screen.dataquery/dataQueryBrowse.menu"/>
     </menu>
 
 </menu-config>

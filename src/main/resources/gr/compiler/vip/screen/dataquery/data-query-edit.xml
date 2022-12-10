@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://dataQueryEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="dataQueryDc"
+                  class="gr.compiler.vip.entity.DataQuery">
+            <fetchPlan extends="_base">
+                <property name="parameters" fetchPlan="_base"/>
+                <property name="fields" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+            <collection id="parametersDc" property="parameters"/>
+            <collection id="fieldsDc" property="fields"/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="editActions">
+        <form id="form" dataContainer="dataQueryDc">
+            <column width="800px">
+                <entityPicker id="dataStoreField" property="dataStore"/>
+                <textField id="nameField" property="name"/>
+                <sourceCodeEditor id="selectQueryField" property="selectQuery" width="100%" height="600px"/>
+            </column>
+        </form>
+        <tabSheet id="queryTabs">
+            <tab id="tabParameters" caption="Parameters">
+                <groupBox id="parametersBox" caption="msg://gr.compiler.vip.entity/DataQuery.parameters">
+                    <table id="parametersTable" dataContainer="parametersDc" width="100%" height="200px">
+                        <actions>
+                            <action id="create" type="create"/>
+                            <action id="edit" type="edit"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="title"/>
+                            <column id="placeholder"/>
+                            <column id="defaultValue"/>
+                            <column id="dataType"/>
+                            <column id="isRequired"/>
+                            <column id="showOnLegend"/>
+                            <column id="order"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="parametersTable.create"/>
+                            <button action="parametersTable.edit"/>
+                            <button action="parametersTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+            <tab id="tabFields" caption="Fields">
+                <groupBox id="fieldsBox" caption="msg://gr.compiler.vip.entity/DataQuery.fields">
+                    <table id="fieldsTable" dataContainer="fieldsDc" width="100%" height="200px">
+                        <actions>
+                            <action id="create" type="create"/>
+                            <action id="edit" type="edit"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <columns>
+                            <column id="label"/>
+                        </columns>
+                        <buttonsPanel>
+                            <button action="fieldsTable.create"/>
+                            <button action="fieldsTable.edit"/>
+                            <button action="fieldsTable.remove"/>
+                        </buttonsPanel>
+                    </table>
+                </groupBox>
+            </tab>
+
+        </tabSheet>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

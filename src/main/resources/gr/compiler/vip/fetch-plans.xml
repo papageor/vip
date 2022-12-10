@@ -1,0 +1,6 @@
+<fetchPlans xmlns="http://jmix.io/schema/core/fetch-plans">
+    <fetchPlan entity="VIP_DataQuery" name="dataQuery-view" extends="_base">
+        <property name="parameters" fetchPlan="_base"/>
+        <property name="fields" fetchPlan="_base"/>
+    </fetchPlan>
+</fetchPlans>

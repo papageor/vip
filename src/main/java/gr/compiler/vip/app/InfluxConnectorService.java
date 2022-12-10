@@ -1792,7 +1792,7 @@ public class InfluxConnectorService {
 
 
         try {
-            if (dataStore.getDatabaseType() == DatabaseType.INFLUXDB.toString()) {
+            if (dataStore.getDatabaseType() == DatabaseType.INFLUXDB) {
                 String token = appSetupService.GetAppSetup().getToken();
                 String org = appSetupService.GetAppSetup().getOrganization();
                 String databaseURL = dataStore.getDatabaseURL();
