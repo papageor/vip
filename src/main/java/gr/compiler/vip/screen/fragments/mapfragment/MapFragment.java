@@ -10,13 +10,13 @@ import elemental.json.JsonArray;
 import gr.compiler.vip.app.InfluxConnectorService;
 import gr.compiler.vip.entity.Coordinates;
 import gr.compiler.vip.entity.Vessel;
+import gr.compiler.vip.screen.vesseloperation.VesselOperationScreen;
 import io.jmix.core.DataManager;
 import io.jmix.ui.Notifications;
+import io.jmix.ui.ScreenBuilders;
+import io.jmix.ui.Screens;
 import io.jmix.ui.component.JavaScriptComponent;
-import io.jmix.ui.screen.ScreenFragment;
-import io.jmix.ui.screen.Subscribe;
-import io.jmix.ui.screen.UiController;
-import io.jmix.ui.screen.UiDescriptor;
+import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -36,6 +36,8 @@ public class MapFragment extends ScreenFragment {
     @Autowired
     private InfluxConnectorService influxConnectorService;
     private HashMap<String, Coordinates> vesselPositions;
+    @Autowired
+    private Screens screens;
 
     @Subscribe
     public void onInit(InitEvent event) throws JsonProcessingException {
@@ -48,9 +50,6 @@ public class MapFragment extends ScreenFragment {
         String jsonString = mapper.writeValueAsString(root);
 
         //https://json2csharp.com/code-converters/json-to-pojo
-        //String jsonObject="{\"type\": \"FeatureCollection\", \"features\": [{\"type\": \"Feature\",\"properties\": {\"name\": \"New York City\"},\"geometry\": {\"type\": \"Point\",\"coordinates\": [-73.778137, 40.641312]}}]}";
-
-        //state.dataItems = jsonObject.replace("\n",",");
         state.dataItems = jsonString;
 
         mapComponent.setState(state);
@@ -63,7 +62,10 @@ public class MapFragment extends ScreenFragment {
             {
                 String vesselName = array.getString(0);
 
-                notifications.create().withDescription(vesselName).show();
+                VesselOperationScreen screen = screens.create(VesselOperationScreen.class, OpenMode.NEW_TAB);
+                screen.setVesselName(vesselName);
+
+                screen.show();
             }
 
             int i = 0;

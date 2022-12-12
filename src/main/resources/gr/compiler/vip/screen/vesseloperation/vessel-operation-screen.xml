@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:dashboard="http://jmix.io/schema/dashboards/ui"
+        caption="msg://vesselOperationScreen.caption">
+    <layout>
+        <dashboard:dashboard id="mainDashboard"
+                             code="Sys-Oper-Dashboard">
+        </dashboard:dashboard>
+    </layout>
+</window>

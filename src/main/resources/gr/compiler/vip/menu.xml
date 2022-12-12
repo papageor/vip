@@ -9,6 +9,8 @@
         <item screen="VIP_Vessel.browse" caption="msg://gr.compiler.vip.screen.vessel/vesselBrowse.menu"/>
         <item screen="VIP_DataQStore.browse" caption="msg://gr.compiler.vip.screen.dataqstore/dataQStoreBrowse.menu"/>
         <item screen="VIP_DataQuery.browse" caption="msg://gr.compiler.vip.screen.dataquery/dataQueryBrowse.menu"/>
+        <item screen="VIP_VesselOperationScreen"
+              caption="msg://gr.compiler.vip.screen.vesseloperation/vesselOperationScreen.caption"/>
     </menu>
 
 </menu-config>

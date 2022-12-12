@@ -1,15 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/ui/fragment">
     <layout>
-        <jsComponent id="animatedMapComponent"
-                     initFunctionName="ui_components_javascript_AnimatedMap" width="600px" height="400px">
-            <dependencies>
-                <dependency path="vaadin://amcharts/index.js"/>
-                <dependency path="vaadin://amcharts/map.js"/>
-                <dependency path="vaadin://amcharts/geodata/worldLow.js"/>
-                <dependency path="vaadin://amcharts/themes/Animated.js"/>
-                <dependency path="vaadin://amcharts/animatedmap/animated-map-connector.js"/>
-            </dependencies>
-        </jsComponent>
+        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
+            <jsComponent id="animatedMapComponent"
+                         initFunctionName="ui_components_javascript_AnimatedMap" width="100%" height="100%">
+                <dependencies>
+                    <dependency path="vaadin://amcharts/index.js"/>
+                    <dependency path="vaadin://amcharts/map.js"/>
+                    <dependency path="vaadin://amcharts/geodata/worldLow.js"/>
+                    <dependency path="vaadin://amcharts/themes/Animated.js"/>
+                    <dependency path="vaadin://amcharts/animatedmap/animated-map-connector.js"/>
+                </dependencies>
+            </jsComponent>
+        </groupBox>
+
     </layout>
 </fragment>

@@ -130,6 +130,7 @@ ui_components_javascript_AnimatedMap = function () {
           });
         });
 
+        /*
         var paris = addCity({ latitude: 48.8567, longitude: 2.351 }, "Paris");
         var toronto = addCity({ latitude: 43.8163, longitude: -79.4287 }, "Toronto");
         var la = addCity({ latitude: 34.3, longitude: -118.15 }, "Los Angeles");
@@ -138,6 +139,18 @@ ui_components_javascript_AnimatedMap = function () {
         var lineDataItem = lineSeries.pushDataItem({
           pointsToConnect: [paris, toronto, la, havana]
         });
+        */
+
+        // Create point series
+        var pointSeries = chart.series.push(
+             am5map.MapPointSeries.new(root, {
+             geoJSON: JSON.parse(data.dataItems)
+           })
+         );
+
+         var lineDataItem = lineSeries.pushDataItem({
+                   pointsToConnect: pointSeries
+                 });
 
         var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
