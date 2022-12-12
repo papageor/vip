@@ -193,6 +193,5 @@ ui_components_javascript_AnimatedMap = function () {
 
         }); // end am5.ready()
 
-        root.appendTo('#achartdiv');
     }
 };

@@ -63,18 +63,25 @@ ui_components_javascript_DirectedTree = function () {
 
         var childTanker = {
             name:"Tankers",
-            value:80,
-            children:[{name:"ALFIOS",value:60},{name:"AXIOS",value:60}]
+            value:300000,
+            children:[{name:"Enterprise",value:120000},{name:"Beaver",value:160000},{name:"Trusty",value:120000}]
         }
         data.children.push(childTanker);
 
 
         var childBulker = {
-                    name:"Bulkers",
-                    value:80,
-                    children:[{name:"ERIMANTHOS",value:60},{name:"RANGER",value:60}]
+                    name:"Bulk Curriers",
+                    value:95000,
+                    children:[{name:"Modena",value:45000},{name:"Brace",value:50000}]
                 }
         data.children.push(childBulker);
+
+        var childContainer = {
+                            name:"Containers",
+                            value:45000,
+                            children:[{name:"Hoffen",value:45000}]
+                        }
+                data.children.push(childContainer);
 
         series.data.setAll([data]);
         series.set("selectedDataItem", series.dataItems[0]);
@@ -97,6 +104,5 @@ ui_components_javascript_DirectedTree = function () {
 
         }); // end am5.ready()
 
-        root.appendTo('#tchartdiv');
     }
 };

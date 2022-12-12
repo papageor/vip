@@ -2,15 +2,16 @@
 <fragment xmlns="http://jmix.io/schema/ui/fragment">
     <layout>
         <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
-            <jsComponent id="mapComponent"
-                         initFunctionName="ui_components_javascript_DirectedTree" width="600px" height="100%">
+            <jsComponent id="rangeComponent"
+                         initFunctionName="ui_components_javascript_RangeBullet" width="100%" height="100%">
                 <dependencies>
                     <dependency path="vaadin://amcharts/index.js"/>
-                    <dependency path="vaadin://amcharts/hierarchy.js"/>
+                    <dependency path="vaadin://amcharts/xy.js"/>
                     <dependency path="vaadin://amcharts/themes/Animated.js"/>
-                    <dependency path="vaadin://amcharts/directedtree-connector.js"/>
+                    <dependency path="vaadin://amcharts/rangebullet-connector.js"/>
                 </dependencies>
             </jsComponent>
         </groupBox>
+
     </layout>
 </fragment>

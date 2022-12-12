@@ -156,6 +156,5 @@ ui_components_javascript_Map = function () {
 
         }); // end am5.ready()
 
-        root.appendTo('#chartdiv');
     }
 };
