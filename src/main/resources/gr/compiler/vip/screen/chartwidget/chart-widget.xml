@@ -17,7 +17,7 @@
                                marginLeft="40"
                                marginRight="40"
                                mouseWheelZoomEnabled="true"
-                               theme="NONE"
+                               theme="PATTERNS"
                                width="100%">
                 <chart:valueAxes>
                     <chart:axis id="v1"

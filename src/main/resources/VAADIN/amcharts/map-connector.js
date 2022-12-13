@@ -1,7 +1,7 @@
 ui_components_javascript_Map = function () {
     var connector = this;
     var element = connector.getElement();
-    element.innerHTML = "<div id=\"chartdiv\" style=\"width: 100%;height: 550px;\"></div>";
+    element.innerHTML = "<div id=\"chartdiv\" style=\"width: 100%;height: 400px;\"></div>";
 
     connector.onStateChange = function () {
         var state = connector.getState();

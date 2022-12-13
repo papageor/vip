@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout>
+        <groupBox width="600px" height="500px" showAsPanel="true" responsive="true" stylename="panel">
+            <jsComponent id="linechartTagComponent"
+                         initFunctionName="ui_components_javascript_LinechartCommonTag" width="100%" height="100%">
+                <dependencies>
+                    <dependency path="vaadin://amcharts/index.js"/>
+                    <dependency path="vaadin://amcharts/xy.js"/>
+                    <dependency path="vaadin://amcharts/themes/Animated.js"/>
+                    <dependency path="vaadin://amcharts/linechart-tag-connector.js"/>
+                </dependencies>
+            </jsComponent>
+        </groupBox>
+    </layout>
+</fragment>

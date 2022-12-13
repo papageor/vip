@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout>
+        <groupBox width="600px" height="400px" showAsPanel="true" responsive="true" stylename="panel">
+            <jsComponent id="mapComponent"
+                         initFunctionName="ui_components_javascript_barchartjs" width="100%" height="100%">
+                <dependencies>
+                    <dependency path="vaadin://chartjs/chart.umd.js"/>
+                    <dependency path="vaadin://chartjs/barchart-connector.js"/>
+                </dependencies>
+            </jsComponent>
+        </groupBox>
+    </layout>
+</fragment>

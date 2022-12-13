@@ -1,7 +1,7 @@
 ui_components_javascript_AnimatedMap = function () {
     var connector = this;
     var element = connector.getElement();
-    element.innerHTML = "<div id=\"achartdiv\" style=\"width: 100%;height: 550px;\"></div>";
+    element.innerHTML = "<div id=\"achartdiv\" style=\"width: 100%;height: 400px;\"></div>";
 
     connector.onStateChange = function () {
         var state = connector.getState();
@@ -185,7 +185,7 @@ ui_components_javascript_AnimatedMap = function () {
           key: "positionOnLine",
           to: 1,
           duration: 10000,
-          loops: infinity,
+          loops: Infinity,
           easing: am5.ease.yoyo(am5.ease.linear)
         });
 
