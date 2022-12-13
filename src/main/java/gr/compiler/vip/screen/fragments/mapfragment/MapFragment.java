@@ -12,11 +12,13 @@ import gr.compiler.vip.entity.Coordinates;
 import gr.compiler.vip.entity.Vessel;
 import gr.compiler.vip.screen.vesseloperation.VesselOperationScreen;
 import io.jmix.core.DataManager;
+import io.jmix.core.session.SessionData;
 import io.jmix.ui.Notifications;
 import io.jmix.ui.ScreenBuilders;
 import io.jmix.ui.Screens;
 import io.jmix.ui.component.JavaScriptComponent;
 import io.jmix.ui.screen.*;
+import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.ArrayList;
@@ -38,6 +40,9 @@ public class MapFragment extends ScreenFragment {
     private HashMap<String, Coordinates> vesselPositions;
     @Autowired
     private Screens screens;
+
+    @Autowired
+    private ObjectProvider<SessionData> sessionDataProvider;
 
     @Subscribe
     public void onInit(InitEvent event) throws JsonProcessingException {
@@ -61,6 +66,9 @@ public class MapFragment extends ScreenFragment {
             if (array != null)
             {
                 String vesselName = array.getString(0);
+
+                //Set session data
+                sessionDataProvider.getObject().setAttribute("session-vessel-sid", vesselName);
 
                 VesselOperationScreen screen = screens.create(VesselOperationScreen.class, OpenMode.NEW_TAB);
                 screen.setVesselName(vesselName);

@@ -106,6 +106,7 @@ public class Setup implements AcceptsTenant {
     @TenantId
     @Column(name = "SYS_TENANT_ID")
     private String tenant;
+
     public String getTenant() {
         return tenant;
     }

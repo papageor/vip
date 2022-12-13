@@ -64,6 +64,10 @@ public class DataService {
                 params.put(key,value);
             }
 
+            key = "windowPeriod";
+            value = String.format("%d%s",1,"d");
+            params.put(key,value);
+
             key = "sid";
             value = vessel.getReferenceId().toString();
             params.put(key, value);
@@ -217,7 +221,7 @@ public class DataService {
 
         String queryName = "FETCH_SINGLE_TAG";
         Optional<DataQuery> query = dataManager.load(DataQuery.class)
-                .query("select d from vesselinsights_DataQuery d where d.name = :name")
+                .query("select d from VIP_DataQuery d where d.name = :name")
                 .parameter("name", queryName)
                 .fetchPlan("dataQuery-view")
                 .optional();
@@ -233,7 +237,7 @@ public class DataService {
 
         String queryName = "OPERATIONS";
         Optional<DataQuery> query = dataManager.load(DataQuery.class)
-                .query("select d from vesselinsights_DataQuery d where d.name = :name")
+                .query("select d from VIP_DataQuery d where d.name = :name")
                 .parameter("name", queryName)
                 .fetchPlan("dataQuery-view")
                 .optional();

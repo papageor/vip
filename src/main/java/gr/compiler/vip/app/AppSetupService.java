@@ -226,7 +226,7 @@ public class AppSetupService {
 
         try {
             Optional<Setup> setupOptional = dataManager.load(Setup.class)
-                    .query("select s from VIP_Setup s where s.tenantId = :tenantId")
+                    .query("select s from VIP_Setup s where s.tenant = :tenantId")
                     .parameter("tenantId", vessel.getTenantId())
                     .optional();
 
@@ -263,7 +263,7 @@ public class AppSetupService {
 
         try {
             Optional<Setup> setupOptional = dataManager.load(Setup.class)
-                    .query("select s from VIP_Setup s where s.tenantId = :tenantId")
+                    .query("select s from VIP_Setup s where s.tenant = :tenantId")
                     .parameter("tenantId", vessel.getTenantId())
                     .optional();
 

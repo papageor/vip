@@ -104,7 +104,7 @@ ui_components_javascript_AnimatedMap = function () {
 
         pointSeries.bullets.push(function() {
           var circle = am5.Circle.new(root, {
-            radius: 7,
+            radius: 2,
             tooltipText: "Drag me!",
             cursorOverStyle: "pointer",
             tooltipY: 0,
@@ -141,16 +141,22 @@ ui_components_javascript_AnimatedMap = function () {
         });
         */
 
-        // Create point series
-        var pointSeries = chart.series.push(
-             am5map.MapPointSeries.new(root, {
-             geoJSON: JSON.parse(data.dataItems)
-           })
-         );
+        var itemsToConnect = new Array();
 
-         var lineDataItem = lineSeries.pushDataItem({
-                   pointsToConnect: pointSeries
-                 });
+        var coordinates = JSON.parse(data.dataItems);
+        if (coordinates != null)
+        {
+            coordinates.forEach(function(e){
+                var item = addCity(e,"");
+
+                itemsToConnect.push(item);
+            });
+        }
+
+
+        var lineDataItem = lineSeries.pushDataItem({
+                  pointsToConnect: itemsToConnect
+                });
 
         var planeSeries = chart.series.push(am5map.MapPointSeries.new(root, {}));
 
@@ -179,7 +185,7 @@ ui_components_javascript_AnimatedMap = function () {
           key: "positionOnLine",
           to: 1,
           duration: 10000,
-          loops: Infinity,
+          loops: infinity,
           easing: am5.ease.yoyo(am5.ease.linear)
         });
 

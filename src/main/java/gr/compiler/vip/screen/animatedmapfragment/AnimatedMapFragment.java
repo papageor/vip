@@ -1,15 +1,14 @@
 package gr.compiler.vip.screen.animatedmapfragment;
 
-import amcharts.Feature;
-import amcharts.Geometry;
+import amcharts.*;
 import amcharts.Properties;
-import amcharts.Root;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import gr.compiler.vip.app.DataService;
 import gr.compiler.vip.entity.Vessel;
 import gr.compiler.vip.entity.VesselPoint;
 import io.jmix.core.DataManager;
+import io.jmix.core.session.SessionData;
 import io.jmix.dashboards.model.Widget;
 import io.jmix.dashboardsui.annotation.WidgetParam;
 import io.jmix.ui.WindowParam;
@@ -18,6 +17,7 @@ import io.jmix.ui.screen.ScreenFragment;
 import io.jmix.ui.screen.Subscribe;
 import io.jmix.ui.screen.UiController;
 import io.jmix.ui.screen.UiDescriptor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.time.LocalDateTime;
@@ -40,15 +40,18 @@ public class AnimatedMapFragment extends ScreenFragment {
     @Autowired
     private JavaScriptComponent animatedMapComponent;
 
+    @Autowired
+    private SessionData sessionData;
+
     @Subscribe
     public void onInit(InitEvent event)  {
         AnimatedMapState state = new AnimatedMapState();
 
-        Root root = getVesseRoute();
+        List<AnimatedRoot> animatedRoots = getVesseRoute();
         ObjectMapper mapper = new ObjectMapper();
         String jsonString = "";
         try{
-            jsonString = mapper.writeValueAsString(root);
+            jsonString = mapper.writeValueAsString(animatedRoots);
         }
         catch (JsonProcessingException e)
         {
@@ -60,11 +63,28 @@ public class AnimatedMapFragment extends ScreenFragment {
 
     }
 
-    private Root getVesseRoute()
+    private int getVesselReferenceId()
     {
-        Root root = new Root();
-        root.type = "FeatureCollection";
-        root.features = new ArrayList<>();
+        int referenceId = 0;
+
+        //if (StringUtils.isNotEmpty(vesselName))
+        //    return vesselName;
+
+        if (sessionData.getAttribute("session-vessel-sid") != null){
+            String sessionValue = sessionData.getAttribute("session-vessel-sid").toString();
+
+            referenceId = Integer.parseInt(sessionValue);
+        }
+
+
+        return referenceId;
+    }
+
+    private List<AnimatedRoot> getVesseRoute()
+    {
+        int referenceId = getVesselReferenceId();
+
+        List<AnimatedRoot> animatedRoots = new ArrayList<>();
 
         LocalDateTime today = LocalDateTime.now(ZoneId.systemDefault());
         LocalDateTime before30Days = today.minusDays(30);
@@ -75,8 +95,8 @@ public class AnimatedMapFragment extends ScreenFragment {
 
         Optional<Vessel> vesselOpt = dataManager.load(Vessel.class)
                 .query("select v from VIP_Vessel v " +
-                        "where v.name = :vesselname")
-                .parameter("vesselname", vesselName)
+                        "where v.referenceId = :sid")
+                .parameter("sid", referenceId)
                 .maxResults(1)
                 .optional();
         if (vesselOpt.isPresent())
@@ -87,28 +107,17 @@ public class AnimatedMapFragment extends ScreenFragment {
             {
                 for(Map.Entry<Date, VesselPoint> entry: vesselPoints.entrySet())
                 {
-                    Properties properties = new Properties();
-                    properties.name = "";
+                    AnimatedRoot root = new AnimatedRoot();
+                    root.latitude = entry.getValue().getLatitude();
+                    root.longitude = entry.getValue().getLongitude();
 
-                    ArrayList<Double> coordinates = new ArrayList<>();
-                    coordinates.add(entry.getValue().getLongitude());
-                    coordinates.add(entry.getValue().getLatitude());
+                    animatedRoots.add(root);
 
-                    Geometry geometry = new Geometry();
-                    geometry.type="Point";
-                    geometry.coordinates = coordinates;
-
-                    Feature feature = new Feature();
-                    feature.type = "Feature";
-                    feature.properties = properties;
-                    feature.geometry = geometry;
-
-                    root.features.add(feature);
                 }
             }
         }
 
-        return root;
+        return animatedRoots;
     }
 }
 
