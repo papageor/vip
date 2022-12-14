@@ -67,8 +67,19 @@ public class AnimatedMapFragment extends ScreenFragment {
     {
         int referenceId = 0;
 
-        //if (StringUtils.isNotEmpty(vesselName))
-        //    return vesselName;
+        if (StringUtils.isNotEmpty(vesselName))
+        {
+            Optional<Vessel> vesselOpt = dataManager.load(Vessel.class)
+                    .query("select v from VIP_Vessel v " +
+                            "where v.name = :name")
+                    .parameter("name", vesselName)
+                    .maxResults(1)
+                    .optional();
+            if (vesselOpt.isPresent())
+            {
+                return vesselOpt.get().getReferenceId();
+            }
+        }
 
         if (sessionData.getAttribute("session-vessel-sid") != null){
             String sessionValue = sessionData.getAttribute("session-vessel-sid").toString();

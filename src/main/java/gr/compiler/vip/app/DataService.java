@@ -186,6 +186,10 @@ public class DataService {
         value = commonTag.getTag();
         params.put(key, value);
 
+        key = "windowPeriod";
+        value = String.format("%d%s",1,"d");
+        params.put(key,value);
+
         DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
         decimalFormatSymbols.setDecimalSeparator('.');
         decimalFormatSymbols.setGroupingSeparator(',');

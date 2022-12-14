@@ -11,6 +11,9 @@
         <item screen="VIP_DataQuery.browse" caption="msg://gr.compiler.vip.screen.dataquery/dataQueryBrowse.menu"/>
         <item screen="VIP_VesselOperationScreen"
               caption="msg://gr.compiler.vip.screen.vesseloperation/vesselOperationScreen.caption"/>
+        <item screen="VIP_UnitOfMeasure.browse"
+              caption="msg://gr.compiler.vip.screen.unitofmeasure/unitOfMeasureBrowse.menu"/>
+        <item screen="VIP_CommonTag.browse" caption="msg://gr.compiler.vip.screen.commontag/commonTagBrowse.menu"/>
     </menu>
 
 </menu-config>

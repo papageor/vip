@@ -8,6 +8,7 @@
                     <dependency path="vaadin://amcharts/index.js"/>
                     <dependency path="vaadin://amcharts/xy.js"/>
                     <dependency path="vaadin://amcharts/themes/Animated.js"/>
+                    <dependency path="vaadin://utils/uuid.min.js"/>
                     <dependency path="vaadin://amcharts/linechart-tag-connector.js"/>
                 </dependencies>
             </jsComponent>

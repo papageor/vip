@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        caption="msg://commonTagEdit.caption"
+        focusComponent="form">
+    <data>
+        <instance id="commonTagDc"
+                  class="gr.compiler.vip.entity.CommonTag">
+            <fetchPlan extends="_base">
+                <property name="parent" fetchPlan="_base"/>
+                <property name="unit" fetchPlan="_base"/>
+            </fetchPlan>
+            <loader/>
+        </instance>
+    </data>
+    <facets>
+        <dataLoadCoordinator auto="true"/>
+        <screenSettings id="settingsFacet" auto="true"/>
+    </facets>
+    <actions>
+        <action id="windowCommitAndClose" caption="msg:///actions.Ok"
+                icon="EDITOR_OK"
+                primary="true"
+                shortcut="${COMMIT_SHORTCUT}"/>
+        <action id="windowClose"
+                caption="msg:///actions.Close"
+                icon="EDITOR_CANCEL"/>
+    </actions>
+    <dialogMode height="600"
+                width="800"/>
+    <layout spacing="true" expand="scrollBox">
+        <scrollBox id="scrollBox" spacing="true">
+            <form id="form" dataContainer="commonTagDc">
+                <column width="350px">
+                    <textField id="tagField" property="tag"/>
+                    <textField id="nameField" property="name"/>
+                    <textField id="totalizerField" property="totalizer"/>
+                    <textField id="averagedField" property="averaged"/>
+                    <textField id="gidField" property="gid"/>
+                    <textField id="notesField" property="notes"/>
+                    <entityPicker id="parentField" property="parent">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="i0Field" property="i0"/>
+                    <textField id="i1Field" property="i1"/>
+                    <textField id="i2Field" property="i2"/>
+                    <textField id="i3Field" property="i3"/>
+                    <entityPicker id="unitField" property="unit">
+                        <actions>
+                            <action id="entityLookup" type="entity_lookup"/>
+                            <action id="entityClear" type="entity_clear"/>
+                        </actions>
+                    </entityPicker>
+                    <textField id="csvIDField" property="csvID"/>
+                    <textField id="lowerValueField" property="lowerValue"/>
+                    <textField id="upperValueField" property="upperValue"/>
+                    <textField id="decimalsField" property="decimals"/>
+                    <checkBox id="isExternalField" property="isExternal"/>
+                    <checkBox id="isCalculatedField" property="isCalculated"/>
+                    <textField id="calculationTagsField" property="calculationTags"/>
+                    <textArea id="calculationExpressionField" property="calculationExpression" rows="5"/>
+                    <textField id="commonTagIdField" property="commonTagId"/>
+                </column>
+            </form>
+        </scrollBox>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>
