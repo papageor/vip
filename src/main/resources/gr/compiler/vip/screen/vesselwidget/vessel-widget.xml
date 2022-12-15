@@ -16,7 +16,7 @@
     <layout>
         <dataGrid id="vesselsTable"
                   width="100%"
-                  dataContainer="vesselsDc">
+                  dataContainer="vesselsDc" stylename="no-vertical-lines no-horizontal-lines borderless compact">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
@@ -29,7 +29,7 @@
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
+                          alwaysVisible="false" visible="false">
                 <button id="createBtn" action="vesselsTable.create"/>
                 <button id="editBtn" action="vesselsTable.edit"/>
                 <button id="refreshBtn" action="vesselsTable.refresh"/>

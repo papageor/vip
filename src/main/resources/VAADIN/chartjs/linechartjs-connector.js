@@ -3,13 +3,14 @@ ui_components_javascript_linechartjs = function () {
     var element = connector.getElement();
     var elementId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-    element.innerHTML = "<div style=\"max-width: 800px;margin: 0 auto;\"><canvas id=\"" + elementId + "\"></canvas></div>";
+    element.innerHTML = "<div style=\"max-width: 800px;max-height:300px;margin: 0 auto;\"><canvas id=\"" + elementId + "\"></canvas></div>";
 
     connector.onStateChange = function () {
         var state = connector.getState();
         var jmix_data = state.data;
 
         //Data
+        /*
         const data = [];
         const data2 = [];
         let prev = 100;
@@ -24,11 +25,32 @@ ui_components_javascript_linechartjs = function () {
           prev2 += 5 - Math.random() * 10;
           data2.push({x: xDate, y: prev2});
         }
+        */
+        var data = [];
+        var data2 = [];
+        var data3 = [];
+
+        if (jmix_data.dataItems != null)
+        {
+          data = JSON.parse(jmix_data.dataItems);
+        }
+
+        if (jmix_data.dataItems2 != null)
+        {
+          data2 = JSON.parse(jmix_data.dataItems2);
+        }
+
+        if (jmix_data.dataItems3 != null)
+        {
+          data3 = JSON.parse(jmix_data.dataItems3);
+        }
+
 
         //Amimation
         const totalDuration = 10000;
-        const delayBetweenPoints = totalDuration / data.length;
-        const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+        const delayBetweenPoints = (totalDuration / data.length) * 0.1; //Papageor: added factor to decrease the delay
+        //const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
+        const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : 0;
         const animation = {
           x: {
             type: 'number',
@@ -63,29 +85,40 @@ ui_components_javascript_linechartjs = function () {
             type: 'line',
             data: {
               datasets: [{
-                borderWidth: 1,
+                label:jmix_data.dataLabel,
+                borderWidth: 2,
                 radius: 0,
-                data: data,
+                data: data
               },
               {
-                borderWidth: 1,
+                label:jmix_data.dataLabel2,
+                borderWidth: 2,
                 radius: 0,
-                data: data2,
-              }]
+                data: data2
+             },
+             {
+                label:jmix_data.dataLabel3,
+                borderWidth: 2,
+                radius: 0,
+                data: data2
+             }]
             },
             options: {
+              responsive: true,
               animation,
               interaction: {
                 intersect: false
               },
               plugins: {
-                legend: false
+                legend: {
+                        position: 'bottom',
+                      }
               },
               scales: {
                 x: {
                   type: 'time',
                   time: {
-                       unit: 'month'
+                       unit: 'day'
                   }
                 }
               }

@@ -52,7 +52,7 @@
             </columns>
             <simplePagination/>
             <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="true">
+                          alwaysVisible="false">
                 <button id="createBtn" action="vesselsTable.create"/>
                 <button id="editBtn" action="vesselsTable.edit"/>
                 <button id="refreshBtn" action="vesselsTable.refresh"/>
