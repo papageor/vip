@@ -3,7 +3,7 @@ ui_components_javascript_linechartjs = function () {
     var element = connector.getElement();
     var elementId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-    element.innerHTML = "<div style=\"width: 600px;height:300px;\"><canvas id=\"" + elementId + "\"></canvas></div>";
+    element.innerHTML = "<div><canvas id=\"" + elementId + "\"></canvas></div>";
 
     connector.onStateChange = function () {
         var state = connector.getState();
@@ -48,7 +48,7 @@ ui_components_javascript_linechartjs = function () {
 
         //Amimation
         const totalDuration = 10000;
-        const delayBetweenPoints = (totalDuration / data.length) * 0.1; //Papageor: added factor to decrease the delay
+        const delayBetweenPoints = (totalDuration / data.length) * 0.3; //Papageor: added factor to decrease the delay
         //const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
         const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : 0;
         const animation = {
