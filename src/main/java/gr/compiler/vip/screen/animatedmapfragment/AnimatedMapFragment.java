@@ -112,8 +112,8 @@ public class AnimatedMapFragment extends ScreenFragment {
                 .optional();
         if (vesselOpt.isPresent())
         {
-            TreeMap<Date, VesselPoint> vesselPoints =  dataService.getVesselRoute(vesselOpt.get(),fromDate,toDate);
-
+            //TreeMap<Date, VesselPoint> vesselPoints =  dataService.getVesselRoute(vesselOpt.get(),fromDate,toDate);
+            TreeMap<Date, VesselPoint> vesselPoints = getVesseRouteMockUp(vesselOpt.get(), fromDate,toDate);
             if (!vesselPoints.isEmpty())
             {
                 for(Map.Entry<Date, VesselPoint> entry: vesselPoints.entrySet())
@@ -129,6 +129,19 @@ public class AnimatedMapFragment extends ScreenFragment {
         }
 
         return animatedRoots;
+    }
+
+    private TreeMap<Date, VesselPoint> getVesseRouteMockUp(Vessel vessel, Date fromDate,Date toDate)
+    {
+        TreeMap<Date, VesselPoint> vesselPoints =  dataService.getVesselRoute(vessel,fromDate,toDate);
+
+        VesselPoint vesselPoint = new VesselPoint();
+        vesselPoint.setLatitude(31.2064);
+        vesselPoint.setLongitude(-78.8174);
+
+        vesselPoints.put(new Date(),vesselPoint);
+
+        return vesselPoints;
     }
 }
 

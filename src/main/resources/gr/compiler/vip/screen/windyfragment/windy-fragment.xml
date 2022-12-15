@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/ui/fragment">
     <layout>
-        <jsComponent id="windyComponent"
-                     initFunctionName="ui_components_javascript_Windy" width="800px" height="600px">
-            <dependencies>
-                <dependency path="vaadin://windy/leaflet.js"/>
-                <dependency path="vaadin://windy/libBoot.js"/>
-                <dependency path="vaadin://windy/windy-connector.js"/>
-            </dependencies>
-        </jsComponent>
+        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
+            <jsComponent id="windyComponent"
+                         initFunctionName="ui_components_javascript_Windy" width="800px" height="600px">
+                <dependencies>
+                    <dependency path="vaadin://windy/leaflet.js"/>
+                    <dependency path="vaadin://windy/libBoot.js"/>
+                    <dependency path="vaadin://windy/windy-connector.js"/>
+                </dependencies>
+            </jsComponent>
+        </groupBox>
+
     </layout>
 </fragment>

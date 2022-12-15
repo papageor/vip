@@ -101,12 +101,26 @@ ui_components_javascript_Map = function () {
             };
 
             // Create point series
+
             var pointSeries = chart.series.push(
               am5map.MapPointSeries.new(root, {
                 geoJSON: JSON.parse(data.dataItems)
               })
             );
 
+            /*
+            for (var i = 0; i < cities.length; i++) {
+                  var city = cities[i];
+                  addCity(city.longitude, city.latitude, city.title);
+                }
+
+                function addCity(longitude, latitude, title) {
+                  pointSeries.data.push({
+                    geometry: { type: "Point", coordinates: [longitude, latitude] },
+                    title: title
+                  });
+                }
+            */
             pointSeries.events.on("click",function(ev){
 
                 //alert(ev.target.dataItem.dataContext.name);
@@ -116,6 +130,7 @@ ui_components_javascript_Map = function () {
             pointSeries.bullets.push(function() {
               const circle = am5.Circle.new(root, {
                                                radius: 5,
+                                               tooltipText: "{name}",
                                                fill: am5.color(0xffba00)
                                              });
 

@@ -60,6 +60,8 @@ ui_components_javascript_LinechartCommonTag = function () {
           tooltip: am5.Tooltip.new(root, {})
         }));
 
+        xAxis.renderer.grid.template.disabled = true;
+
         var yAxis = chart.yAxes.push(am5xy.ValueAxis.new(root, {
           maxDeviation: 0.2,
           renderer: am5xy.AxisRendererY.new(root, {})

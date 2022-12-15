@@ -21,10 +21,7 @@ import io.jmix.ui.screen.*;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 @UiController("VIP_MapFragment")
 @UiDescriptor("map-fragment.xml")
@@ -67,13 +64,23 @@ public class MapFragment extends ScreenFragment {
             {
                 String vesselName = array.getString(0);
 
-                //Set session data
-                sessionDataProvider.getObject().setAttribute("session-vessel-sid", vesselName);
+                Optional<Vessel> vesselOpt = dataManager.load(Vessel.class)
+                        .query("select v from VIP_Vessel v " +
+                                "where v.name = :name")
+                        .parameter("name", vesselName)
+                        .maxResults(1)
+                        .optional();
+                if (vesselOpt.isPresent())
+                {
+                    //Set session data
+                    sessionDataProvider.getObject().setAttribute("session-vessel-sid", vesselOpt.get().getReferenceId().toString());
 
-                VesselOperationScreen screen = screens.create(VesselOperationScreen.class, OpenMode.NEW_TAB);
-                screen.setVesselName(vesselName);
+                    VesselOperationScreen screen = screens.create(VesselOperationScreen.class, OpenMode.NEW_TAB);
+                    screen.setVesselName(vesselName);
 
-                screen.show();
+                    screen.show();
+                }
+
             }
 
             int i = 0;
@@ -86,7 +93,8 @@ public class MapFragment extends ScreenFragment {
         root.type = "FeatureCollection";
         root.features = new ArrayList<>();
 
-        vesselPositions = influxConnectorService.getFleetCoordinates();
+        //vesselPositions = influxConnectorService.getFleetCoordinates();
+        vesselPositions = getFleetCoordinatesMockUp();
 
         if (!vesselPositions.isEmpty())
         {
@@ -115,6 +123,56 @@ public class MapFragment extends ScreenFragment {
         }
 
         return root;
+    }
+
+    private HashMap<String,Coordinates> getFleetCoordinatesMockUp()
+    {
+        HashMap<String,Coordinates> coordinates = new HashMap<>();
+
+        {
+            Coordinates coordinate = new Coordinates();
+            coordinate.setLatitude(57.9665);
+            coordinate.setLongitude(21.2066);
+            coordinates.put("Modena", coordinate);
+        }
+
+        {
+            Coordinates coordinate = new Coordinates();
+            coordinate.setLatitude(27.8422);
+            coordinate.setLongitude(-32.0592);
+            coordinates.put("Enterpise", coordinate);
+        }
+
+        {
+            Coordinates coordinate = new Coordinates();
+            coordinate.setLatitude(-9.098576);
+            coordinate.setLongitude(76.3973);
+            coordinates.put("Beaver", coordinate);
+        }
+
+
+        {
+            Coordinates coordinate = new Coordinates();
+            coordinate.setLatitude(33.7273);
+            coordinate.setLongitude(156.2020);
+            coordinates.put("Trusty", coordinate);
+        }
+
+        {
+            Coordinates coordinate = new Coordinates();
+            coordinate.setLatitude(33.2876);
+            coordinate.setLongitude(-75.3018);
+            coordinates.put("Brave", coordinate);
+        }
+
+        {
+            Coordinates coordinate = new Coordinates();
+            coordinate.setLatitude(16.3024);
+            coordinate.setLongitude(-60.0088);
+            coordinates.put("Hoffen", coordinate);
+        }
+
+        return coordinates;
     }
 
 

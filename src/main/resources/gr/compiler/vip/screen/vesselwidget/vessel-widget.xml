@@ -14,27 +14,30 @@
         <dataLoadCoordinator auto="true"/>
     </facets>
     <layout>
-        <dataGrid id="vesselsTable"
-                  width="100%"
-                  dataContainer="vesselsDc" stylename="no-vertical-lines no-horizontal-lines borderless compact">
-            <actions>
-                <action id="create" type="create"/>
-                <action id="edit" type="edit"/>
-                <action id="refresh" type="refresh"/>
-                <action id="remove" type="remove"/>
-            </actions>
-            <columns>
-                <column property="name" id="name"/>
-                <column property="type" id="type"/>
-            </columns>
-            <simplePagination/>
-            <buttonsPanel id="buttonsPanel"
-                          alwaysVisible="false" visible="false">
-                <button id="createBtn" action="vesselsTable.create"/>
-                <button id="editBtn" action="vesselsTable.edit"/>
-                <button id="refreshBtn" action="vesselsTable.refresh"/>
-                <button id="removeBtn" action="vesselsTable.remove"/>
-            </buttonsPanel>
-        </dataGrid>
+        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
+            <dataGrid id="vesselsTable"
+                      width="100%"
+                      dataContainer="vesselsDc" stylename="no-vertical-lines no-horizontal-lines borderless compact">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="refresh" type="refresh"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column property="name" id="name"/>
+                    <column property="type" id="type"/>
+                </columns>
+                <simplePagination/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="false" visible="false">
+                    <button id="createBtn" action="vesselsTable.create"/>
+                    <button id="editBtn" action="vesselsTable.edit"/>
+                    <button id="refreshBtn" action="vesselsTable.refresh"/>
+                    <button id="removeBtn" action="vesselsTable.remove"/>
+                </buttonsPanel>
+            </dataGrid>
+        </groupBox>
+
     </layout>
 </fragment>

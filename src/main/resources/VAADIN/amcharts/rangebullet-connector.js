@@ -33,40 +33,58 @@ ui_components_javascript_RangeBullet = function () {
 
 
             var data = [{
-              category: "Enterprise GRPIR-AEFJR",
-              open: 1.00,
-              close: 5,
-              average: 1.6
-            }, {
-              category: "Beaver NLRTM-SAAUT",
-              open: 1.00,
-              close: 5,
-              average: 2.5
-            }, {
-                           category: "Trusty SAALK-QAASN",
-                           open: 1.0,
-                           close: 5,
-                           average: 4.0
-                         }
-            , {
-                          category: "Modena GRPIR-QAABH",
-                          open: 1.0,
+                          category: "Enterprise",
+                          from:"GRPIR",
+                          to:"HLRTD",
+                          eta:"08/01/2023 23:00",
+                          open: 1.00,
                           close: 5,
-                          average: 4.5
-                        }
-            , {
-                          category: "Brave TRAJI-EGALA",
-                          open: 1.0,
+                          average: 1.6
+                        }, {
+                          category: "Beaver",
+                          from:"NLRTM",
+                          to:"SAAUT",
+                          eta:"30/12/2022 14:00",
+                          open: 1.00,
                           close: 5,
                           average: 2.5
-                        }
-            , {
-                          category: "Hoffen EGAST-DKAED",
-                          open: 1.0,
-                          close: 5,
-                          average: 3.5
-              }
-            ];
+                        }, {
+                                       category: "Trusty",
+                                       from:"GRPIR",
+                                       to:"HLRTD",
+                                       eta:"23/12/2022 15:30",
+                                       open: 1.0,
+                                       close: 5,
+                                       average: 4.0
+                                     }
+                        , {
+                                      category: "Modena",
+                                      from:"GRPIR",
+                                      to:"QAABH",
+                                      eta:"22/12/2022 12:30",
+                                      open: 1.0,
+                                      close: 5,
+                                      average: 4.5
+                                    }
+                        , {
+                                      category: "Brave",
+                                      from:"TRAJI",
+                                      to:"EGALA",
+                                      eta:"04/01/2023 19:30",
+                                      open: 1.0,
+                                      close: 5,
+                                      average: 2.5
+                                    }
+                        , {
+                                      category: "Hoffen",
+                                      from:"EGAST",
+                                      to:"DKAED",
+                                      eta:"29/12/2022 18:30",
+                                      open: 1.0,
+                                      close: 5,
+                                      average: 3.5
+                          }
+                        ];
 
 
             // Create axes
@@ -130,6 +148,9 @@ ui_components_javascript_RangeBullet = function () {
               });
             });
 
+            series.columns.template.setAll({
+                            tooltipText: "{from}->{to}, ETA:{eta}"
+                          });
 
             var series2 = chart.series.push(am5xy.LineSeries.new(root, {
               name: "Average Score",
@@ -149,8 +170,8 @@ ui_components_javascript_RangeBullet = function () {
             series2.bullets.push(function () {
               return am5.Bullet.new(root, {
                 sprite: am5.Triangle.new(root, {
-                  fill: am5.color(0x70b603),
-                  rotation: 180,
+                  fill: am5.color(0x009dd9),
+                  rotation: 93,
                   width: 24,
                   height: 24
                 })

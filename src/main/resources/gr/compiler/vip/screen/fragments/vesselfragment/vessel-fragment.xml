@@ -13,18 +13,21 @@
             </loader>
         </collection>
     </data>
-    <layout expand="vesselsTable" spacing="true">
-        <dataGrid id="vesselsTable"
-                  width="100%"
-                  dataContainer="vesselsDc" stylename="borderless no-vertical-lines no-horizontal-lines">
-            <actions>
-                <action id="view" type="view"/>
-            </actions>
-            <columns>
-                <column property="name" id="name"/>
-                <column property="type" id="type"/>
-            </columns>
-            <simplePagination/>
-        </dataGrid>
+    <layout spacing="true">
+        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
+            <dataGrid id="vesselsTable"
+                      width="100%"
+                      dataContainer="vesselsDc" stylename="borderless no-vertical-lines no-horizontal-lines">
+                <actions>
+                    <action id="view" type="view"/>
+                </actions>
+                <columns>
+                    <column property="name" id="name"/>
+                    <column property="type" id="type"/>
+                </columns>
+                <simplePagination/>
+            </dataGrid>
+        </groupBox>
+
     </layout>
 </fragment>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout>
+        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
+            <hbox>
+                <groupBox>
+                    <image>
+                        <resource>
+                            <relativePath path="images/Red.jpg"/>
+                        </resource>
+                    </image>
+                </groupBox>
+                <groupBox>
+                    <image>
+                        <resource>
+                            <relativePath path="images/MainEngine.jpg"/>
+                        </resource>
+                    </image>
+                </groupBox>
+            </hbox>
+        </groupBox>
+    </layout>
+</fragment>

@@ -3,7 +3,7 @@ ui_components_javascript_linechartjs = function () {
     var element = connector.getElement();
     var elementId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-    element.innerHTML = "<div style=\"max-width: 800px;max-height:300px;margin: 0 auto;\"><canvas id=\"" + elementId + "\"></canvas></div>";
+    element.innerHTML = "<div style=\"width: 600px;height:300px;\"><canvas id=\"" + elementId + "\"></canvas></div>";
 
     connector.onStateChange = function () {
         var state = connector.getState();
@@ -95,12 +95,6 @@ ui_components_javascript_linechartjs = function () {
                 borderWidth: 2,
                 radius: 0,
                 data: data2
-             },
-             {
-                label:jmix_data.dataLabel3,
-                borderWidth: 2,
-                radius: 0,
-                data: data2
              }]
             },
             options: {
@@ -111,11 +105,14 @@ ui_components_javascript_linechartjs = function () {
               },
               plugins: {
                 legend: {
-                        position: 'bottom',
+                        position: 'top',
                       }
               },
               scales: {
                 x: {
+                  grid: {
+                    display: false
+                  },
                   type: 'time',
                   time: {
                        unit: 'day'
