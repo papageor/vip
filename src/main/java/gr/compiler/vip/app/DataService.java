@@ -220,6 +220,83 @@ public class DataService {
         return series;
     }
 
+    public TreeMap<Date, Double>  getVesselConsumption(Vessel vessel, Date fromDate, Date toDate)
+    {
+        TreeMap<Date, Double> series = new TreeMap<>();
+
+        int offsetDays = appSetupService.getDemoModeOffsetDays();
+
+        DataQuery dataQuery = null;
+        dataQuery = getDataQueryOfConsumption();
+
+        HashMap<String, String> params = new HashMap<>();
+        String key = "";
+        String value = "";
+        params.clear();
+
+        if (fromDate != null){
+            key = "startDate";
+            value = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(fromDate);
+
+            String utcValue = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(fromDate) + "+00:00";
+            value = utcValue;
+
+            //value = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(fromDate);
+            params.put(key,value);
+        }
+
+        if (toDate != null){
+
+            key = "endDate";
+            value = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(toDate);
+            String utcValue = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss").format(toDate) + "+00:00";
+            value = utcValue;
+            //value = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssXXX").format(toDate);
+            params.put(key,value);
+        }
+
+        key = "sid";
+        value = vessel.getReferenceId().toString();
+        params.put(key, value);
+
+        key = "windowPeriod";
+        value = String.format("%d%s",1,"d");
+        params.put(key,value);
+
+        DecimalFormatSymbols decimalFormatSymbols = new DecimalFormatSymbols();
+        decimalFormatSymbols.setDecimalSeparator('.');
+        decimalFormatSymbols.setGroupingSeparator(',');
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0.00", decimalFormatSymbols);
+        decimalFormat.setGroupingUsed(false); // Do not use grouping symbol for thousands - influx cannot accept it.
+
+        List<FluxTable> fluxTables = influxConnectorService.getFluxTables(dataQuery, params, false);
+        if ((fluxTables != null) && (!fluxTables.isEmpty())) {
+            for (FluxTable fluxTable : fluxTables)
+            {
+                List<FluxRecord> records = fluxTable.getRecords();
+                for (FluxRecord fluxRecord : records)
+                {
+                    Date timeStamp = Date.from(fluxRecord.getTime());
+                    if (offsetDays > 0) {
+                        timeStamp = DateUtils.addDays(timeStamp, offsetDays);
+                    }
+
+                    Double tagValue = getFluxRecordValueByKey(fluxRecord,"_value",2);
+                    if (tagValue != 0) {
+                        BigDecimal bgTotalConsumption = new BigDecimal(tagValue * 24 / 1000.0).setScale(1, RoundingMode.HALF_UP);
+                        tagValue = bgTotalConsumption.doubleValue();
+                    }
+
+                    series.put(timeStamp,tagValue);
+                }
+            }
+        }
+
+
+
+        return series;
+    }
+
     private DataQuery getDataQueryOfSinglTag() {
         DataQuery dataQuery = null;
 
@@ -240,6 +317,22 @@ public class DataService {
         DataQuery dataQuery = null;
 
         String queryName = "OPERATIONS";
+        Optional<DataQuery> query = dataManager.load(DataQuery.class)
+                .query("select d from VIP_DataQuery d where d.name = :name")
+                .parameter("name", queryName)
+                .fetchPlan("dataQuery-view")
+                .optional();
+        if (query.isPresent()) {
+            dataQuery = query.get();
+        }
+
+        return dataQuery;
+    }
+
+    private DataQuery getDataQueryOfConsumption() {
+        DataQuery dataQuery = null;
+
+        String queryName = "OPERATIONS_CONSUMPTION";
         Optional<DataQuery> query = dataManager.load(DataQuery.class)
                 .query("select d from VIP_DataQuery d where d.name = :name")
                 .parameter("name", queryName)

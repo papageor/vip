@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://jmix.io/schema/ui/window"
+        xmlns:dashboard="http://jmix.io/schema/dashboards/ui"
+        caption="msg://welcomeScreen.caption">
+    <layout>
+        <dashboard:dashboard id="mainDashboard"
+                             code="VoyageDash"
+                             timerDelay="60">
+        </dashboard:dashboard>
+    </layout>
+</window>

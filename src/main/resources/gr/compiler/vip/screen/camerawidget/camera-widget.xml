@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/ui/fragment">
     <layout>
-        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel">
-            <hbox>
-                <groupBox>
-                    <image>
+        <groupBox width="600px" height="100%" showAsPanel="true" responsive="true" stylename="panel"
+                  outerMargin="true" spacing="true">
+            <hbox spacing="true">
+                <groupBox spacing="true">
+                    <image width="300px" height="100%" scaleMode="FILL">
                         <resource>
-                            <relativePath path="images/Red.jpg"/>
+                            <relativePath path="VAADIN/images/Red.jpg"/>
                         </resource>
                     </image>
                 </groupBox>
-                <groupBox>
-                    <image>
+                <groupBox spacing="true">
+                    <image width="300px" height="100%" scaleMode="FILL">
                         <resource>
-                            <relativePath path="images/MainEngine.jpg"/>
+                            <relativePath path="VAADIN/images/MainEngine.jpg"/>
                         </resource>
                     </image>
                 </groupBox>

@@ -4,7 +4,7 @@ ui_components_javascript_LinechartCommonTag = function () {
 
     var elementId = Date.now().toString(36) + Math.random().toString(36).substr(2);
 
-    element.innerHTML = "<div id=\"" +elementId+ "\" style=\"width: 100%;height: 100%;\"></div>";
+    element.innerHTML = "<div id=\"" +elementId+ "\" style=\"width: 100%;height: 400px;\"></div>";
 
     connector.onStateChange = function () {
         var state = connector.getState();

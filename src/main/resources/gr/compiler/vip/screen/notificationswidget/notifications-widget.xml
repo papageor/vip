@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <data readOnly="true">
+        <collection id="notificationsDc"
+                    class="gr.compiler.vip.entity.Notification">
+            <fetchPlan extends="_base"/>
+            <loader id="notificationsDl">
+                <query>
+                    <![CDATA[select e from VIP_Notification e
+                    order by e.creationDate desc]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <layout spacing="true">
+        <groupBox width="600px" height="600px" showAsPanel="true" responsive="true" stylename="panel" spacing="true"
+                  outerMargin="true">
+            <groupTable id="notificationsTable"
+                        width="100%"
+                        dataContainer="notificationsDc"
+                        stylename="no-vertical-lines no-horizontal-lines borderless compact">
+                <actions>
+                    <action id="create" type="create"/>
+                    <action id="edit" type="edit"/>
+                    <action id="remove" type="remove"/>
+                </actions>
+                <columns>
+                    <column id="creationDate" caption="Creation Date" width="120"/>
+                    <column id="source" caption="Vessel" width="80"/>
+                    <column id="message" caption="Message"/>
+                    <column id="level" caption="Level"/>
+                </columns>
+                <simplePagination/>
+                <buttonsPanel id="buttonsPanel"
+                              alwaysVisible="false" visible="false">
+                    <button id="createBtn" action="notificationsTable.create"/>
+                    <button id="editBtn" action="notificationsTable.edit"/>
+                    <button id="removeBtn" action="notificationsTable.remove"/>
+                </buttonsPanel>
+            </groupTable>
+        </groupBox>
+
+    </layout>
+</fragment>

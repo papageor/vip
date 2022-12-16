@@ -1,6 +1,5 @@
 package gr.compiler.vip.screen.linechartjswidget;
 
-import amcharts.TimeSeries;
 import chartjs.TimeSeriesJS;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -113,8 +112,8 @@ public class LinechartjsWidget extends ScreenFragment {
             for(Map.Entry<Date,Double> entry:timeSeriesMap.entrySet())
             {
                 TimeSeriesJS point = new TimeSeriesJS();
-                point.x = entry.getKey();
-                point.y = entry.getValue();
+                point.setX(entry.getKey());
+                point.setY(entry.getValue());
 
                 timeSeries.add(point);
             }

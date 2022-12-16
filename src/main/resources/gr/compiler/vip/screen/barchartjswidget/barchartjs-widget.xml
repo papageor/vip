@@ -1,6 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <fragment xmlns="http://jmix.io/schema/ui/fragment">
     <layout>
-        <fragment id="barchart" screen="VIP_BarchartjsFragment"></fragment>
+        <groupBox width="100%" height="300px" showAsPanel="true" responsive="true" stylename="panel">
+            <jsComponent id="lineChartJSComponent"
+                         initFunctionName="ui_components_javascript_barchartjs" width="100%" height="100%"
+                         responsive="true">
+                <dependencies>
+                    <dependency path="vaadin://chartjs/chart.umd.js"/>
+                    <dependency path="vaadin://chartjs/helpers.js"/>
+                    <dependency path="vaadin://chartjs/chartjs-adapter-date-fns.bundle.min.js"/>
+                    <dependency path="vaadin://chartjs/date_fns.js"/>
+                    <dependency path="vaadin://chartjs/barchartjs-connector.js"/>
+                </dependencies>
+            </jsComponent>
+        </groupBox>
     </layout>
 </fragment>

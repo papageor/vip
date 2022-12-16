@@ -86,13 +86,13 @@ ui_components_javascript_linechartjs = function () {
             data: {
               datasets: [{
                 label:jmix_data.dataLabel,
-                borderWidth: 2,
+                borderWidth: 3,
                 radius: 0,
                 data: data
               },
               {
                 label:jmix_data.dataLabel2,
-                borderWidth: 2,
+                borderWidth: 3,
                 radius: 0,
                 data: data2
              }]

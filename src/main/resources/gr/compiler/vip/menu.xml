@@ -14,6 +14,9 @@
         <item screen="VIP_UnitOfMeasure.browse"
               caption="msg://gr.compiler.vip.screen.unitofmeasure/unitOfMeasureBrowse.menu"/>
         <item screen="VIP_CommonTag.browse" caption="msg://gr.compiler.vip.screen.commontag/commonTagBrowse.menu"/>
+        <item screen="VIP_Notification.browse"
+              caption="msg://gr.compiler.vip.screen.notification/notificationBrowse.menu"/>
+        <item screen="VIP_WelcomeScreen" caption="msg://gr.compiler.vip.screen.welcome/welcomeScreen.caption"/>
     </menu>
 
 </menu-config>

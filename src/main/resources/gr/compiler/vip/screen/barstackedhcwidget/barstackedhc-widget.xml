@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://jmix.io/schema/ui/fragment">
+    <layout>
+        <groupBox width="100%" height="300px" showAsPanel="true" responsive="true" stylename="panel">
+            <jsComponent id="BarStackedHCComponent"
+                         initFunctionName="ui_components_javascript_barstackedhc" width="100%" height="100%"
+                         responsive="true">
+                <dependencies>
+                    <dependency path="vaadin://highcharts/highcharts.js"/>
+                    <dependency path="vaadin://highcharts/modules/exporting.js"/>
+                    <dependency path="vaadin://highcharts/modules/export-data.js"/>
+                    <dependency path="vaadin://highcharts/modules/accessibility.js"/>
+                    <dependency path="vaadin://highcharts/connectors/barstackedhighc-connector.js"/>
+                    <dependency path="vaadin://highcharts/connectors/barstackedhighc-connector.css" type="STYLESHEET"/>
+                </dependencies>
+            </jsComponent>
+        </groupBox>
+    </layout>
+</fragment>
